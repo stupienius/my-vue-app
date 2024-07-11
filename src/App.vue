@@ -1,16 +1,17 @@
 <script setup>
-	import HelloWorld from './components/HelloWorld.vue'
-	import selection from './components/menu.vue'
-	import banner from './components/banner.vue'
+	import Selection from './components/menu.vue'
+	import Banner from './components/banner.vue'
+	import Add from './components/add.vue'
 </script>
 
 <template>
 	<body>		
 		<header>
-			<banner/>
-			<selection/>
+			<Banner/>
 		</header>
 		<main>
+			<Selection/>
+			<Add />
 		</main>
 	</body>
 </template>
@@ -28,6 +29,8 @@
 		height: auto;
 	}
 	main{
-		background-color: gray;
+		display: flex;
+		flex-direction: column;
+		background-color: gray;	
 	}
 </style>
