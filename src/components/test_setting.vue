@@ -4,7 +4,7 @@ import Switch from './switch.vue'
 
 const showSetting = ref(false)
 
-const toggleSetting = () => {
+const showPopup = () => {
     showSetting.value = !showSetting.value
 }
 
@@ -17,8 +17,8 @@ const setTestStatus = () => {
 </script>
 <template>
     <div class='container'>
-        <img @click="toggleSetting" src="../assets/setting.svg" alt="setting button">
-        <div class="popup">
+        <img @click="showPopup" src="../assets/setting.svg" alt="setting button">
+        <div v-if="showSetting" class="popup">
             <Switch control = 'head' />
             <Switch control = 'tail' />
             <Switch control = 'chinese' />
@@ -30,8 +30,12 @@ const setTestStatus = () => {
 </template>
 <style scoped>
 .container{
+    position: absolute;
+    right: 0px;
     display: flex;
     flex-direction: row-reverse;
+    align-items: flex-start;
+    z-index: 5;
 }
 .popup{
     background-color: gray;

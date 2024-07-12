@@ -17,6 +17,7 @@ defineProps(['control'])
 <style scoped>
 .containe{
     height: 50px;
+    width: 200px;
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -24,6 +25,7 @@ defineProps(['control'])
 }
 p{
     display: flex;
+    width: 80%;
     text-align: center;
     justify-content: center;
 }
