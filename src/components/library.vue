@@ -19,10 +19,9 @@ onMounted(() => {
     <div>
         <h2>Vocabulary List</h2>
         <ul v-if="vocabularyList.length > 0">
-            <li v-for="(entry, index) in vocabularyList" :key="index">
+            <li v-for="(entry, index) in vocabularyList" :key="index" @click="detail(entry.index)">
                 <strong>{{ entry.word }}</strong>
                 <span v-if="entry.chinese"> - {{ entry.chinese }}</span>
-                <p v-if="entry.examples">Example: {{ entry.examples }}</p>
             </li>
         </ul>
         <p v-else>No vocabulary words saved yet.</p>
