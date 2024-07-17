@@ -8,10 +8,10 @@ const showPopup = () => {
     showSetting.value = !showSetting.value
 }
 
-const emit = defineEmits(['head','tail','ch','POS','sentance','lenght'])
+const emit = defineEmits(['setStatus'])
 
-const setTestStatus = () => {
-    emit(e);
+const setTestStatus = (component,which) => {
+    emit('setStatus',{which:which,component:component});
 }
 
 </script>
@@ -19,12 +19,12 @@ const setTestStatus = () => {
     <div class='container'>
         <img @click="showPopup" src="../assets/setting.svg" alt="setting button">
         <div v-if="showSetting" class="popup">
-            <Switch control = 'head' />
-            <Switch control = 'tail' />
-            <Switch control = 'chinese' />
-            <Switch control = 'part of speech' />
-            <Switch control = 'sentance' />
-            <Switch control = 'lenght' />
+            <Switch @switch="setTestStatus($event, 0)" control="head" />
+            <Switch @switch="setTestStatus($event, 1)" control="tail" />
+            <Switch @switch="setTestStatus($event, 2)" control="chinese" />
+            <Switch @switch="setTestStatus($event, 3)" control="part of speech" />
+            <Switch @switch="setTestStatus($event, 4)" control="sentance" />
+            <Switch @switch="setTestStatus($event, 5)" control="lenght" />
         </div>
     </div>
 </template>

@@ -1,13 +1,22 @@
 <script setup>
-defineProps(['control'])
+const props = defineProps(['control'])
+
+const emit = defineEmits(['switch'])
+
+const handlechange = (event) => {
+    emit('switch',event.target.checked)
+    console.log(event.target.checked)
+}
+
 </script>
+
 
 <template>
     <div class="containe">
         <p>{{ control }}</p>
         <div class="center">
             <label class="switch">
-                <input type="checkbox">
+                <input @change="handlechange" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -36,8 +45,8 @@ p{
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 28px;
+    width: 50px;
+    height: 25px;
 }
 .switch input {
     opacity: 0;
@@ -58,8 +67,8 @@ p{
 .slider:before {
     position: absolute;
     content: "";
-    height: 21px;
-    width: 21px;
+    height: 17px;
+    width: 17px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -67,7 +76,7 @@ p{
     border-radius: 50%;
 }
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #a09e17;
 }
 input:checked + .slider:before {
     transform: translateX(26px);

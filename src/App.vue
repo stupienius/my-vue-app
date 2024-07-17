@@ -5,6 +5,7 @@ import Banner from './components/banner.vue'
 import Add from './components/add.vue'
 import Library from './components/library.vue'
 import Test from './components/test.vue'
+import Xata from './components/xata.vue'
 
 const activeComponent = ref('library')
 
@@ -17,6 +18,7 @@ const setActiveComponent = (component) => {
   <body>
     <header>
       <Banner />
+      <Xata />
     </header>
     <main>
       <Selection @set-component="setActiveComponent" />

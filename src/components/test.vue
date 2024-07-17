@@ -4,14 +4,18 @@ import Setting from './test_setting.vue'
 
 const testStatus = ref([false,false,false,false,false,false])
 
+const handleStatues = (component) => {
+    testStatus.value[component.which] = component.component
+}
+
 </script>
 <template>
     <div class="test">
         <div class="setting">
-            <Setting />
+            <Setting @setStatus="handleStatues" />
         </div>
         <div class="quiz">
-            <p class="ch">chinese</p>
+            <p v-show="testStatus[0]" class="ch">chinese</p>
             <p class="pos">(v)</p>
             <p class="head">h</p>
             <input type="text" id="test">
