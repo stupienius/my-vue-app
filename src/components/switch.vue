@@ -1,22 +1,27 @@
 <script setup>
-const props = defineProps(['control'])
+import { ref, watch } from 'vue'
 
+const props = defineProps(['control', 'checked'])
 const emit = defineEmits(['switch'])
 
+const isChecked = ref(props.checked)
+
 const handlechange = (event) => {
-    emit('switch',event.target.checked)
-    console.log(event.target.checked)
+    isChecked.value = event.target.checked
+    emit('switch', isChecked.value)
 }
 
+watch(() => props.checked, (newValue) => {
+    isChecked.value = newValue
+})
 </script>
-
 
 <template>
     <div class="containe">
         <p>{{ control }}</p>
         <div class="center">
             <label class="switch">
-                <input @change="handlechange" type="checkbox">
+                <input @change="handlechange" type="checkbox" :checked="isChecked">
                 <span class="slider"></span>
             </label>
         </div>

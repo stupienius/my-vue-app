@@ -2,26 +2,26 @@
 import { ref } from 'vue'
 import Setting from './test_setting.vue'
 
-const testStatus = ref([false,false,false,false,false,false])
+const testStatus = ref([false, false, false, false, false, false])
 
 const handleStatues = (component) => {
     testStatus.value[component.which] = component.component
 }
-
 </script>
+
 <template>
     <div class="test">
         <div class="setting">
-            <Setting @setStatus="handleStatues" />
+            <Setting @setStatus="handleStatues" :switchStates="testStatus" />
         </div>
         <div class="quiz">
-            <p v-show="testStatus[0]" class="ch">chinese</p>
-            <p class="pos">(v)</p>
-            <p class="head">h</p>
+            <p v-show="testStatus[2]" class="ch">chinese</p>
+            <p v-show="testStatus[3]" class="pos">(v)</p>
+            <p v-show="testStatus[0]" class="head">h</p>
             <input type="text" id="test">
-            <p class="tail">r</p>
-            <p class="len">5</p>
-            <p class="sentance">you are the apple of my eyes</p>
+            <p v-show="testStatus[1]" class="tail">r</p>
+            <p v-show="testStatus[5]" class="len">5</p>
+            <p v-show="testStatus[4]" class="sentance">you are the apple of my eyes</p>
         </div>
     </div>
 </template>

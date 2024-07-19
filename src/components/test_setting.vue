@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Switch from './switch.vue'
 
+const props = defineProps(['switchStates'])
 const showSetting = ref(false)
 
 const showPopup = () => {
@@ -10,21 +11,22 @@ const showPopup = () => {
 
 const emit = defineEmits(['setStatus'])
 
-const setTestStatus = (component,which) => {
-    emit('setStatus',{which:which,component:component});
+const setTestStatus = (component, which) => {
+    emit('setStatus', { which: which, component: component });
 }
 
 </script>
+
 <template>
     <div class='container'>
         <img @click="showPopup" src="../assets/setting.svg" alt="setting button">
         <div v-if="showSetting" class="popup">
-            <Switch @switch="setTestStatus($event, 0)" control="head" />
-            <Switch @switch="setTestStatus($event, 1)" control="tail" />
-            <Switch @switch="setTestStatus($event, 2)" control="chinese" />
-            <Switch @switch="setTestStatus($event, 3)" control="part of speech" />
-            <Switch @switch="setTestStatus($event, 4)" control="sentance" />
-            <Switch @switch="setTestStatus($event, 5)" control="lenght" />
+            <Switch @switch="setTestStatus($event, 0)" :checked="switchStates[0]" control="head" />
+            <Switch @switch="setTestStatus($event, 1)" :checked="switchStates[1]" control="tail" />
+            <Switch @switch="setTestStatus($event, 2)" :checked="switchStates[2]" control="chinese" />
+            <Switch @switch="setTestStatus($event, 3)" :checked="switchStates[3]" control="part of speech" />
+            <Switch @switch="setTestStatus($event, 4)" :checked="switchStates[4]" control="sentance" />
+            <Switch @switch="setTestStatus($event, 5)" :checked="switchStates[5]" control="lenght" />
         </div>
     </div>
 </template>
